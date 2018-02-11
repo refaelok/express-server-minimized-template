@@ -1,5 +1,6 @@
 const express     = require('express');
 const mongoose    = require('mongoose');
+const morgan     = require('morgan');
 const bodyParser  = require('body-parser');
 const config      = require('./src/config');
 const routes      = require('./src/controllers');
@@ -12,6 +13,7 @@ const app         = express();
 // Set Middleware
 // =============================================================================
 
+app.use(morgan('dev')); // log requests to the console
 app.use(httpHeaders); // apply headers
 app.use(bodyParser.urlencoded({ extended: true })); // configure body parser
 app.use(bodyParser.json()); // configure body parser
